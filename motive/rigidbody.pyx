@@ -80,6 +80,17 @@ def clear_rigid_body_list():
     TT_ClearRigidBodyList()
 
 
+def rigid_body_count():
+    return TT_RigidBodyCount()
+
+def is_rigid_body_tracked(idex):
+    return TT_IsRigidBodyTracked(idex)
+
+def get_all_spatial_data(idex):
+    cdef float x = 0., y = 0., z = 0., qx = 0., qy = 0., qz = 0., qw = 0., yaw = 0., pitch = 0., roll = 0.
+    TT_RigidBodyLocation(idex,  &x, &y, &z,  &qx, &qy, &qz, &qw, &yaw, &pitch, &roll)
+    return {'location': Location(x, y, z), 'rotation': EulerRotation(yaw, pitch, roll),'rotation_quats': Quaternion(qx, qy, qz, qw)}
+
 #CLASS
 class RigidBody(object):
     def __init__(self, index):
