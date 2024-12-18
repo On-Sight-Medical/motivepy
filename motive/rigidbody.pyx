@@ -137,15 +137,6 @@ class RigidBody(object):
         return PyUnicode_FromWideChar(name, -1)
 
     @property
-    def user_data(self):
-        """int: Rigid body user data"""
-        return "Rigid body ID: {0}".format(RigidBodyUserData(self.index))
-
-    @user_data.setter
-    def user_data(self,value):
-        SetRigidBodyUserData(self.index,value)
-
-    @property
     def enabled(self):
         """bool: Rigid body tracking enabled"""
         return RigidBodyEnabled(self.index)
