@@ -119,11 +119,10 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
         kVideoType_MJPEG     = 6,
         kVideoType_ColorH264 = 9
 
-    cdef enum eMotiveAPICameraStates:
+    cdef enum eCameraStates:
         Camera_Enabled = 0,
         Camera_Disabled_For_Reconstruction = 1,
-        Camera_Disabled = 2,
-        CameraStatesCount = 3
+        Camera_Disabled = 2
 
 #STARTUP / SHUTDOWN
     eResult    Initialize()                                                        #initialize library
@@ -214,8 +213,8 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 
 #POINT CLOUD INTERFACE
 
-    bool SetCameraState( int cameraIndex, eMotiveAPICameraStates state )
-    bool CameraState( int cameraIndex, eMotiveAPICameraStates& currentState )
+    bool SetCameraState( int cameraIndex, eCameraStates state )
+    bool CameraState( int cameraIndex, eCameraStates& currentState )
 
     int    CameraCount()                                                         #Returns Camera Count
     float  CameraXLocation(int index)                                            #Returns Camera's X Coord
