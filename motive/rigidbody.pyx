@@ -39,7 +39,15 @@ Location = namedtuple('Location', 'x y z')
 #FUNCTIONS
 def get_unident_markers():
     """Returns a tuple containing all tuples of 3D marker positions not part of rigid bodies"""
-    markers=tuple((FrameMarkerX(i), FrameMarkerY(i), FrameMarkerZ(i)) for i in xrange(FrameMarkerCount()))
+    cdef float x, y, z
+    cdef list coords = []
+    for i in range(MarkerCount()):
+        # Call the function; it returns True on success (assumes success for all)
+        MarkerXYZ(i, x, y, z)
+        coords.append((x, y, z))
+
+    markers=tuple(coords)
+#    markers=tuple((FrameMarkerX(i), FrameMarkerY(i), FrameMarkerZ(i)) for i in xrange(FrameMarkerCount()))
     rigs=get_rigid_bodies().values()
     imarkers=[]
     unimarkers=[]
@@ -51,7 +59,14 @@ def get_unident_markers():
     return tuple(unimarkers)
 
 def get_all_rigid_bodies_markers():
-    markers=[(FrameMarkerX(i), FrameMarkerY(i), FrameMarkerZ(i)) for i in xrange(FrameMarkerCount())]
+    cdef float x, y, z
+    cdef list coords = []
+    for i in range(MarkerCount()):
+        # Call the function; it returns True on success (assumes success for all)
+        MarkerXYZ(i, x, y, z)
+        coords.append((x, y, z))
+
+    markers=[coords]
     return markers
 
 def get_rigid_bodies():

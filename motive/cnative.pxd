@@ -152,10 +152,11 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 #    int    StreamNP(bool enabled)                                               #Start/stop NaturalPoint Stream
 
 #FRAME
-    int    FrameMarkerCount()                                                   #Returns Frame Markers Count
-    float  FrameMarkerX(int index)                                              #Returns X Coord of Marker
-    float  FrameMarkerY(int index)                                              #Returns Y Coord of Marker
-    float  FrameMarkerZ(int index)                                              #Returns Z Coord of Marker
+    int    MarkerCount()                                                   #Returns Frame Markers Count
+#    float  FrameMarkerX(int index)                                              #Returns X Coord of Marker
+#    float  FrameMarkerY(int index)                                              #Returns Y Coord of Marker
+#    float  FrameMarkerZ(int index)                                              #Returns Z Coord of Marker
+    bool    MarkerXYZ( int markerIndex, float& x, float& y, float& z)
     cUID FrameMarkerLabel(int index)                                          #Returns Label of Marker
     double FrameTimeStamp()                                                     #Time Stamp of Frame (seconds)
     bool   FrameCameraCentroid(int index, int cameraIndex, float &x, float &y)  #FrameCameraCentroid returns true if the camera is contributing to this 3D marker.  It also returns the location of the 2D centroid that is reconstructing to this 3D marker ##through changing the x and y values

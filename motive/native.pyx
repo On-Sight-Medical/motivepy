@@ -201,7 +201,15 @@ def load_calibration_from_memory(buffer, int buffersize):
 #MARKERS
 def get_frame_markers():
     """Returns a tuple containing all tuples of 3D marker positions"""
-    return tuple((FrameMarkerX(i), FrameMarkerY(i), FrameMarkerZ(i)) for i in xrange(FrameMarkerCount()))
+    cdef float x, y, z
+    cdef list coords = []
+    for i in range(MarkerCount()):
+        # Call the function; it returns True on success (assumes success for all)
+        MarkerXYZ(i, x, y, z)
+        coords.append((x, y, z))
+
+    return tuple(coords)
+    #return tuple((FrameMarkerX(i), FrameMarkerY(i), FrameMarkerZ(i)) for i in xrange(FrameMarkerCount()))
 
 cdef class _markID:
     cdef cUID *thisptr            # hold a C++ instance which we're wrapping
