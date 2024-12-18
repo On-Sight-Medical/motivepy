@@ -55,7 +55,7 @@ def initialize():
 @check_npresult
 def shutdown():
     """Closes the connection to the cameras"""
-    return Shutdown()
+    Shutdown()
 
 @decorators.block_for_frame(secs_to_timeout=3)
 def update_single_frame():

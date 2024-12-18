@@ -127,7 +127,7 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 
 #STARTUP / SHUTDOWN
     eResult    Initialize()                                                        #initialize library
-    eResult    Shutdown()                                                          #shutdown library
+    void       Shutdown()                                                          #shutdown library
 
 #RIGID BODY INTERFACE
     eResult    LoadCalibration(const wchar_t *filename, int *cameraCount)                                #load calibration
