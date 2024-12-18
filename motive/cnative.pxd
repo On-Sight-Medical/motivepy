@@ -213,8 +213,8 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 
 #POINT CLOUD INTERFACE
 
-    bool SetCameraState( int cameraIndex, eCameraStates state )
-    bool CameraState( int cameraIndex, eCameraStates& currentState )
+    bool SetCameraState( int cameraIndex, eCameraState state )
+    bool CameraState( int cameraIndex, eCameraState& currentState )
 
     int    CameraCount()                                                         #Returns Camera Count
     float  CameraXLocation(int index)                                            #Returns Camera's X Coord
