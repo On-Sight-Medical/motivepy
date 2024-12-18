@@ -80,7 +80,7 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPIProcessingSettings":  #can no
             eSettingsCount              # returns 1
 
 
-cdef extern from "MotiveAPI.h":
+cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 
     cdef cppclass MotiveAPIProcessingSettings:
         MotiveAPIProcessingSettings() except +
