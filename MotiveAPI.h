@@ -639,7 +639,7 @@ MOTIVE_API bool CameraPixelResolution( int cameraIndex, int& width, int& height 
 MOTIVE_API bool CameraMarkerPredistorted( int cameraIndex, int markerIndex, float& x, float& y );
 
 // Camera Video Type Definitions
-enum eMotiveAPIVideoType
+enum eVideoType
 {
     kVideoType_Segment   = 0,
     kVideoType_Grayscale = 1,
@@ -662,7 +662,7 @@ enum eMotiveAPIMJPEGQuality
 
 // Use these functions to update settings on individual cameras
 // Returns true if the operation was successful, false otherwise
-// VideoType    : One of eMotiveAPIVideoType above
+// VideoType    : One of eVideoType above
 // Exposure     : Exposure time in micro-seconds
 // Threshold    : Threshold value 0-255
 // IRLedsOn     : True to enable IR illumination, false to disable

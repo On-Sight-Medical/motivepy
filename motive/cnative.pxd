@@ -111,7 +111,7 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
         kApiResult_CouldNotFindGroundPlane,
         kApiResult_UnableToAccessCameras
 
-    cdef enum eMotiveAPIVideoType:
+    cdef enum eVideoType:
         kVideoType_Segment   = 0,
         kVideoType_Grayscale = 1,
         kVideoType_Object    = 2,
