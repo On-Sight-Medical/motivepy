@@ -109,7 +109,7 @@ class Camera(object):
     @property
     def enabled(self):
         """boole: whether the camera is enabled"""
-        cdef eCameraStates currentState
+        cdef eCameraState currentState
         CameraState(self.index, currentState)
         return currentState == Camera_Enabled
 

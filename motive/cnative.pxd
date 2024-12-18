@@ -119,7 +119,7 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
         kVideoType_MJPEG     = 6,
         kVideoType_ColorH264 = 9
 
-    cdef enum eCameraStates:
+    cdef enum eCameraState:
         Camera_Enabled = 0,
         Camera_Disabled_For_Reconstruction = 1,
         Camera_Disabled = 2
