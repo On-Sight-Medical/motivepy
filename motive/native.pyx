@@ -201,7 +201,7 @@ def load_calibration_from_memory(buffer, int buffersize):
 #MARKERS
 def get_frame_markers():
     """Returns a tuple containing all tuples of 3D marker positions"""
-    cdef float x, y, z
+    cdef float x=0, y=0, z=0
     cdef list coords = []
     for i in range(MarkerCount()):
         # Call the function; it returns True on success (assumes success for all)
