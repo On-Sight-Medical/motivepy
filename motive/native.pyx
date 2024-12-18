@@ -228,15 +228,6 @@ cdef class _markID:
         """19 digit integer number ending with a capital L(20 digits)"""
         return self.thisptr.HighBits()
 
-def frame_marker_label(marker_index):
-    """Returns marker label object
-
-    This object holds a unique ID for every marker.
-    """
-    ID=_markID()
-    cdef cUID label=FrameMarkerLabel(marker_index)
-    ID.thisptr=&label
-    return ID
 
 def frame_time_stamp():
     """Returns time stamp of frame in seconds"""

@@ -156,8 +156,8 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 #    float  FrameMarkerX(int index)                                              #Returns X Coord of Marker
 #    float  FrameMarkerY(int index)                                              #Returns Y Coord of Marker
 #    float  FrameMarkerZ(int index)                                              #Returns Z Coord of Marker
+#    cUID FrameMarkerLabel(int index)                                          #Returns Label of Marker
     bool    MarkerXYZ( int markerIndex, float& x, float& y, float& z)
-    cUID FrameMarkerLabel(int index)                                          #Returns Label of Marker
     double FrameTimeStamp()                                                     #Time Stamp of Frame (seconds)
     bool   FrameCameraCentroid(int index, int cameraIndex, float &x, float &y)  #FrameCameraCentroid returns true if the camera is contributing to this 3D marker.  It also returns the location of the 2D centroid that is reconstructing to this 3D marker ##through changing the x and y values
     void   FlushCameraQueues()                                                  #In the event that you are tracking a very high number of 2D and/or 3D markers (hundreds of 3D markers), and you find that the data you're getting out has sufficient latency you can call FlushCameraQueues() to catch up before calling Update(). Ideally, after calling FlushCameraQueues() you'll want to not call it again until after Update() returns NPRESULT_SUCCESS
