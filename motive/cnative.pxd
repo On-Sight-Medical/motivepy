@@ -164,15 +164,15 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
 
 #RIGID BODY CONTROL
     bool   IsRigidBodyTracked(int index)                                        #Is rigid body currently tracked
-    void   RigidBodyLocation(int index,                                         #RigidBody Index
+    void   RigidBodyTransform(int index,                                         #RigidBody Index
                                      float *x, float *y, float *z,                      #Position
                                      float *qx, float *qy, float *qz, float *qw,        #Orientation
                                      float *yaw, float *pitch, float *roll)             #Orientation
 
     eResult    RemoveRigidBody(int index)                                           #Remove single rigid body
     int    RigidBodyCount()                                                     #Returns number of rigid bodies
-    int    RigidBodyUserData(int index)                                         #Get RigidBodies User Data
-    void   SetRigidBodyUserData(int index, int ID)                              #Set RigidBodies User Data
+#    int    RigidBodyUserData(int index)                                         #Get RigidBodies User Data
+#    void   SetRigidBodyUserData(int index, int ID)                              #Set RigidBodies User Data
     bool   RigidBodyName( int index, wchar_t* buffer, int bufferSize );
     #const char*  RigidBodyName (int index)                                      #Returns RigidBody Name
     ##const wchar_t* RigidBodyNameW(int index)
@@ -183,9 +183,9 @@ cdef extern from "MotiveAPI.h" namespace "MotiveAPI":
     int    RigidBodyMarkerCount(int index)                                      #Get marker count
     void   RigidBodyMarker(int rigidIndex,                                      #Get RigidBody mrkr
                               int markerIndex, float *x, float *y, float *z)
-    void   RigidBodyPointCloudMarker(int rigidIndex,                            #Get corresponding point cloud marker
-                                             int markerIndex, bool &tracked,            #If tracked is false, there is no
-                                             float &x, float &y, float &z)              #corresponding point cloud marker.
+#    void   RigidBodyPointCloudMarker(int rigidIndex,                            #Get corresponding point cloud marker
+#                                             int markerIndex, bool &tracked,            #If tracked is false, there is no
+#                                             float &x, float &y, float &z)              #corresponding point cloud marker.
     int    CreateRigidBody(const wchar_t* name, int id,                            #Create a rigid body based on the marker count and marker list provided.  The marker list is expected to contain of list of marker coordinates in the order: x1,y1,z1,x2,y2,z2,...xN,yN,zN.
                                    int markerCount, float *markerList)
     ##cdef int RigidBodySettings   (int index, cRigidBodySettings &settings)           #Get RigidBody Settings

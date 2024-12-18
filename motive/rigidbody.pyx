@@ -172,7 +172,7 @@ class RigidBody(object):
 
         """
         cdef float x = 0., y = 0., z = 0., qx = 0., qy = 0., qz = 0., qw = 0., yaw = 0., pitch = 0., roll = 0.
-        RigidBodyLocation(self.index,  &x, &y, &z,  &qx, &qy, &qz, &qw, &yaw, &pitch, &roll)
+        RigidBodyTransform(self.index,  &x, &y, &z,  &qx, &qy, &qz, &qw, &yaw, &pitch, &roll)
         return {'location': Location(x, y, z), 'rotation': EulerRotation(yaw, pitch, roll),'rotation_quats': Quaternion(qx, qy, qz, qw)}
 
     @property
@@ -211,21 +211,6 @@ class RigidBody(object):
             markers.append((x, y, z))
         return tuple(markers)
 
-    @property
-    def point_cloud_markers(self):
-        """Tuple[float]:  Rigid body's global 3D marker positions."""
-        markers = []
-        cdef int markerIndex
-        cdef bool tracked = True
-        cdef float x = 0, y = 0, z = 0
-        for markerIndex in xrange(RigidBodyMarkerCount(self.index)):
-            # Get marker position
-            RigidBodyPointCloudMarker(self.index, markerIndex, tracked, x, y, z)
-            # Add the marker if one was found (tracked was True). Else, substitute by rigid body position to reduce error
-            marker = (x, y, z) if tracked else self.location
-            markers.append(marker)
-
-        return tuple(markers)               #Tuples for the location of each marker is good. But all locations together seems more feasible for list!
 
     #@native.check_npresult
     def translate_pivot(self, float x, float y, float z):
