@@ -126,25 +126,25 @@ cdef extern from "MotiveAPI.h":
         CameraStatesCount = 3
 
 #STARTUP / SHUTDOWN
-    eMotiveAPIResult    Initialize()                                                        #initialize library
-    eMotiveAPIResult    Shutdown()                                                          #shutdown library
+    eResult    Initialize()                                                        #initialize library
+    eResult    Shutdown()                                                          #shutdown library
 
 #RIGID BODY INTERFACE
-    eMotiveAPIResult    LoadCalibration(const wchar_t *filename, int *cameraCount)                                #load calibration
+    eResult    LoadCalibration(const wchar_t *filename, int *cameraCount)                                #load calibration
     ##int    LoadCalibrationW(const wchar_t *filename)                          ##only necessary when not using english alphabet to name files
-    eMotiveAPIResult    LoadRigidBodies(const wchar_t *filename)                                #load rigid bodies
+    eResult    LoadRigidBodies(const wchar_t *filename)                                #load rigid bodies
     ##int    LoadRigidBodiesW(const wchar_t *filename)
-    eMotiveAPIResult    SaveRigidBodies(const char *filename)                                #save rigid bodies
+    eResult    SaveRigidBodies(const char *filename)                                #save rigid bodies
     ##int    SaveRigidBodiesW(const wchar_t *filename)
-    eMotiveAPIResult    AddRigidBodies(const char *filename)                                 #add rigid bodies
+    eResult    AddRigidBodies(const char *filename)                                 #add rigid bodies
     ##int    AddRigidBodiesW (const wchar_t *filename)
-    eMotiveAPIResult    LoadProfile(const wchar_t *filename)                                    #load profile file
+    eResult    LoadProfile(const wchar_t *filename)                                    #load profile file
     ##int    LoadProfileW(const wchar_t *filename)
-    eMotiveAPIResult    SaveProfile(const wchar_t *filename)                                    #save profile file
+    eResult    SaveProfile(const wchar_t *filename)                                    #save profile file
     ##int    SaveProfileW(const wchar_t *filename)
-    eMotiveAPIResult    LoadCalibrationFromMemory(unsigned char* buffer, int bufferSize)
-    eMotiveAPIResult    Update()                                                             # Process incoming camera data
-    eMotiveAPIResult    UpdateSingleFrame()                                                  # Process incoming camera data
+    eResult    LoadCalibrationFromMemory(unsigned char* buffer, int bufferSize)
+    eResult    Update()                                                             # Process incoming camera data
+    eResult    UpdateSingleFrame()                                                  # Process incoming camera data
 
 #DATA STREAMING
 #    int    StreamTrackd(bool enabled)                                           #Start/stop Trackd Stream
@@ -168,7 +168,7 @@ cdef extern from "MotiveAPI.h":
                                      float *qx, float *qy, float *qz, float *qw,        #Orientation
                                      float *yaw, float *pitch, float *roll)             #Orientation
 
-    eMotiveAPIResult    RemoveRigidBody(int index)                                           #Remove single rigid body
+    eResult    RemoveRigidBody(int index)                                           #Remove single rigid body
     int    RigidBodyCount()                                                     #Returns number of rigid bodies
     int    RigidBodyUserData(int index)                                         #Get RigidBodies User Data
     void   SetRigidBodyUserData(int index, int ID)                              #Set RigidBodies User Data
@@ -177,7 +177,7 @@ cdef extern from "MotiveAPI.h":
     ##const wchar_t* RigidBodyNameW(int index)
     void   SetRigidBodyEnabled(int index, bool enabled)                         #Set Tracking
     bool   RigidBodyEnabled(int index)                                          #Get Tracking
-    eMotiveAPIResult    RigidBodyTranslatePivot(int index, float x, float y, float z)
+    eResult    RigidBodyTranslatePivot(int index, float x, float y, float z)
     bool   RigidBodyResetOrientation(int index)
     int    RigidBodyMarkerCount(int index)                                      #Get marker count
     void   RigidBodyMarker(int rigidIndex,                                      #Get RigidBody mrkr
